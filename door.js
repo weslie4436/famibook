@@ -667,7 +667,7 @@
     [
       "./read.html",
       "./read.css?v=15",
-      origin + "/static/reader.js?v=30",
+      origin + "/static/reader.js?v=31",
       origin + "/static/css/global.css?v=20",
       origin + "/static/css/read.css?v=20",
       origin + "/static/css/navImage.css?v=20",
@@ -1507,6 +1507,8 @@
       const nextId = String(ev.data.book);
       const item = catalog[nextId] || { id: nextId, has_cover: true };
       openReader(item, { wait: "下一集..." });
+    } else if (kind === "job-queued") {
+      if (window.FamiHost && window.FamiHost.pollJobs) window.FamiHost.pollJobs();
     } else if (kind === "reader-loading" && readerOpen) {
       const layer = document.getElementById("reader-layer");
       if (layer) layer.classList.remove("is-live");

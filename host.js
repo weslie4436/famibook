@@ -26,6 +26,8 @@
   const JOB_LABEL = {
     capture: "截取",
     series: "全套截取",
+    recapture: "整本重截",
+    recapture_page: "修復單頁",
     generate: "文字",
     generate_research: "日常研究",
     generate_guide: "遊戲攻略",
@@ -1497,6 +1499,7 @@
     syncGear: syncGear,
     loadJobs: loadJobs,
     paintPlus: paintPlus,
+    pollJobs: pollJobs,
     kind: function () { return tab(); },
   };
 })();

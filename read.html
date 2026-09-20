@@ -137,6 +137,24 @@ window.FAMI_WEB_READER = true;
         </span>
       </button>
       <div id="readerSettingsMenu" class="settings-menu" hidden role="menu">
+        <button type="button" class="settings-entry" id="repairPageBtn" role="menuitem" hidden>
+          <span class="ins-icon job-icon" aria-hidden="true">
+            <span class="ins-ring"></span>
+            <span class="ins-face">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.8 12a7.2 7.2 0 0 1 11.9-5.5M19.2 12A7.2 7.2 0 0 1 7.3 17.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M15.8 4.6v4.1h4.1M8.2 19.4v-4.1H4.1" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </span>
+          <span>修復這頁</span>
+        </button>
+        <button type="button" class="settings-entry" id="repairVolumeBtn" role="menuitem" hidden>
+          <span class="ins-icon job-icon" aria-hidden="true">
+            <span class="ins-ring"></span>
+            <span class="ins-face">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 5.5h12v13H6z" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M9 9h6M9 12.5h6M9 16h4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            </span>
+          </span>
+          <span>整本重新擷取</span>
+        </button>
         <button type="button" class="settings-entry" id="openReaderConfig" role="menuitem">
           <span class="ins-icon job-icon" aria-hidden="true">
             <span class="ins-ring"></span>
@@ -232,6 +250,17 @@ window.FAMI_WEB_READER = true;
     </label>
   </div>
 </div>
+<div class="ask-mask" id="readerAskMask" hidden>
+  <div class="ask-card" role="dialog" aria-modal="true">
+    <p id="readerAskText">修復這一頁?</p>
+    <div class="ask-actions">
+      <button type="button" class="ask-no" id="readerAskNo">取消</button>
+      <button type="button" class="tag-apply" id="readerAskYes">
+        <span class="tag-apply-face">確認</span>
+      </button>
+    </div>
+  </div>
+</div>
 
 <script>
 (function () {
@@ -248,7 +277,7 @@ window.FAMI_WEB_READER = true;
     return;
   }
   var s = document.createElement("script");
-  s.src = origin + "/static/reader.js?v=30";
+  s.src = origin + "/static/reader.js?v=31";
   s.async = false;
   document.body.appendChild(s);
 })();
