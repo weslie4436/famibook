@@ -666,8 +666,8 @@
     const tok = encodeURIComponent(key);
     [
       "./read.html",
-      "./read.css?v=15",
-      origin + "/static/reader.js?v=31",
+      "./read.css?v=16",
+      "./reader.js?v=32",
       origin + "/static/css/global.css?v=20",
       origin + "/static/css/read.css?v=20",
       origin + "/static/css/navImage.css?v=20",

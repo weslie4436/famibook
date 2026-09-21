@@ -19,7 +19,7 @@ html, body.famiWeb {
     "Microsoft JhengHei", sans-serif !important;
   font-weight: 400 !important;
   letter-spacing: 0 !important;
-  touch-action: none;
+  touch-action: manipulation;
   overscroll-behavior: none;
   overscroll-behavior-x: none;
   -webkit-touch-callout: none;
@@ -235,14 +235,25 @@ body.famiWeb #configButton svg {
   color: #1c1c1e;
 }
 body.famiWeb #bottomMenu {
-  padding-bottom: env(safe-area-inset-bottom, 0px);
+  z-index: 20;
+  touch-action: pan-x;
+}
+body.famiWeb #bottomMenu:not(.hidden) {
+  pointer-events: auto;
 }
 body.famiWeb #bottomMenu .navContainer {
-  padding: 10px 16px calc(12px + env(safe-area-inset-bottom, 0px));
+  padding: 6px 16px calc(10px + env(safe-area-inset-bottom, 0px));
+  min-height: 52px;
+  touch-action: pan-x;
+  pointer-events: auto;
 }
 body.famiWeb #sliderContainer {
   width: 100%;
   gap: 10px;
+  min-height: 44px;
+  align-items: center;
+  touch-action: pan-x;
+  pointer-events: auto;
 }
 body.famiWeb #pageSliderLeft,
 body.famiWeb #pageSliderRight {
@@ -250,25 +261,45 @@ body.famiWeb #pageSliderRight {
   color: var(--mute);
   font-weight: 400;
   min-width: 2em;
+  pointer-events: none;
 }
-body.famiWeb .slider {
+body.famiWeb .slider,
+body.famiWeb #pageSlider {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 44px;
+  margin: 0;
+  background: transparent;
+  touch-action: pan-x !important;
+  pointer-events: auto;
+}
+body.famiWeb .slider::-webkit-slider-runnable-track {
   height: 3px;
   border-radius: 999px;
   background: var(--line);
-  touch-action: pan-x;
-}
-body.famiWeb #pageSlider {
-  touch-action: pan-x;
 }
 body.famiWeb .slider::-webkit-slider-thumb {
-  width: 14px;
-  height: 14px;
+  -webkit-appearance: none;
+  appearance: none;
+  width: 28px;
+  height: 28px;
+  margin-top: -12.5px;
+  border: none;
+  border-radius: 999px;
   background: var(--accent);
   filter: none;
 }
+body.famiWeb .slider::-moz-range-track {
+  height: 3px;
+  border: none;
+  border-radius: 999px;
+  background: var(--line);
+}
 body.famiWeb .slider::-moz-range-thumb {
-  width: 14px;
-  height: 14px;
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: 999px;
   background: var(--accent);
   filter: none;
 }
