@@ -667,7 +667,7 @@
     [
       "./read.html",
       "./read.css?v=16",
-      "./reader.js?v=32",
+      "./reader.js?v=34",
       origin + "/static/css/global.css?v=20",
       origin + "/static/css/read.css?v=20",
       origin + "/static/css/navImage.css?v=20",

@@ -143,25 +143,28 @@ function leafAspect(leaf) {
 }
 
 /**
- * CSS box that fills the pageWidth budget (full screen on the web reader).
+ * CSS boxes that fill the pageWidth budget.
+ * Double-page must size each half from its own cut, not copy the left box —
+ * cover + equal boxes overlap the gutter (helicopter drawn twice).
  */
-function fitLeafCssSize(leaf, innerW, innerH, margin, doubled) {
-  const aspect = leafAspect(leaf);
+function fitPairCssSize(leftLeaf, rightLeaf, innerW, innerH, margin) {
+  const aL = leafAspect(leftLeaf);
+  const aR = rightLeaf ? leafAspect(rightLeaf) : 0;
+  const total = Math.max(0.2, aL + aR);
   const availW = innerW * margin;
   const availH = innerH * margin;
-  let horizNeed = availH * aspect;
-  if (doubled) horizNeed *= 2;
-  const vertical = availW < horizNeed;
-  let cssW;
-  let cssH;
-  if (vertical) {
-    cssW = doubled ? availW / 2 : availW;
-    cssH = cssW / aspect;
-  } else {
-    cssH = availH;
-    cssW = cssH * aspect;
-  }
-  return { vertical, width: Math.round(cssW), height: Math.round(cssH) };
+  const cssH = availW < availH * total ? availW / total : availH;
+  return {
+    left: { width: Math.round(cssH * aL), height: Math.round(cssH) },
+    right: rightLeaf
+      ? { width: Math.round(cssH * aR), height: Math.round(cssH) }
+      : null,
+  };
+}
+
+function fitLeafCssSize(leaf, innerW, innerH, margin, doubled) {
+  const pair = fitPairCssSize(leaf, doubled ? leaf : null, innerW, innerH, margin);
+  return pair.left;
 }
 
 const PAGE_ZOOM_MIN = 1;
@@ -621,11 +624,17 @@ async function main() {
     const { w: innerW, h: innerH } = viewSize();
     if (innerW < 8 || innerH < 8) return;
     const doubled = !!(rightLeaf && showingDouble);
-    const box = fitLeafCssSize(leftLeaf, innerW, innerH, margin, doubled);
+    const pair = fitPairCssSize(
+      leftLeaf,
+      doubled ? rightLeaf : null,
+      innerW,
+      innerH,
+      margin,
+    );
     showLeaf(leftImg, leftLeaf);
     showLeaf(rightImg, rightLeaf);
-    applyLeafBox(leftImg, leftLeaf, box);
-    applyLeafBox(rightImg, rightLeaf, rightLeaf ? box : null);
+    applyLeafBox(leftImg, leftLeaf, pair.left);
+    applyLeafBox(rightImg, rightLeaf, doubled ? pair.right : null);
     snapHostPixel(host || leftImg.parentElement);
   }
 
