@@ -44,7 +44,7 @@ const PREF_KEYS = [
   "pageWidthManual",
 ];
 
-const PAGES_ORIGIN = "https://theoldfathertw.github.io/famibook/";
+const PAGES_ORIGIN = "https://weslie4436.github.io/famibook/";
 
 function isWebReader() {
   return Boolean(window.FAMI_WEB_READER);
