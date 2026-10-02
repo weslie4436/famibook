@@ -1,1 +1,1 @@
-window.VAULT_ORIGIN = "https://reading-mineral-magnitude-carol.trycloudflare.com";
+window.VAULT_ORIGIN = "https://python-dated-shadows-dome.trycloudflare.com";
