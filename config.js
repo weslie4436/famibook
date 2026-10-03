@@ -1,1 +1,1 @@
-window.VAULT_ORIGIN = "https://cent-towards-shade-hampshire.trycloudflare.com";
+window.VAULT_ORIGIN = "https://future-roads-beautiful-captain.trycloudflare.com";
