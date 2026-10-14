@@ -1,1 +1,1 @@
-window.VAULT_ORIGIN = "https://phil-encountered-vhs-revisions.trycloudflare.com";
+window.VAULT_ORIGIN = "https://restoration-nominated-released-gate.trycloudflare.com";
