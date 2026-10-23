@@ -1,1 +1,1 @@
-window.VAULT_ORIGIN = "https://restoration-nominated-released-gate.trycloudflare.com";
+window.VAULT_ORIGIN = "https://shadow-marble-seventh-participated.trycloudflare.com";
