@@ -1,1 +1,1 @@
-window.VAULT_ORIGIN = "https://bloggers-thesis-ssl-sunrise.trycloudflare.com";
+window.VAULT_ORIGIN = "https://popularity-confident-reduce-campaigns.trycloudflare.com";
