@@ -1,1 +1,1 @@
-window.VAULT_ORIGIN = "https://popularity-confident-reduce-campaigns.trycloudflare.com";
+window.VAULT_ORIGIN = "https://dating-pools-ancient-other.trycloudflare.com";
