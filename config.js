@@ -1,1 +1,1 @@
-window.VAULT_ORIGIN = "https://dating-pools-ancient-other.trycloudflare.com";
+window.VAULT_ORIGIN = "https://gives-places-friday-expert.trycloudflare.com";
