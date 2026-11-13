@@ -1,1 +1,1 @@
-window.VAULT_ORIGIN = "https://hits-requests-isaac-hybrid.trycloudflare.com";
+window.VAULT_ORIGIN = "https://difference-inform-earn-aye.trycloudflare.com";
