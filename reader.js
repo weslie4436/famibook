@@ -6,6 +6,7 @@ const I18N = {
     pageWidth: "頁面寬度",
     displayMode: "顯示模式（單頁／雙頁）",
     splitSpreads: "跨頁切成單頁",
+    chaseGutter: "自動找書縫",
     paperTexture: "紙紋",
     bookFold: "書溝",
     lighting: "光影",
@@ -19,6 +20,7 @@ const I18N = {
     pageWidth: "Page width",
     displayMode: "Display mode (single / double)",
     splitSpreads: "Split spreads into pages",
+    chaseGutter: "Find page gutter",
     paperTexture: "Paper texture",
     bookFold: "Book fold",
     lighting: "Lighting",
@@ -35,6 +37,7 @@ const PREF_KEYS = [
   "theme",
   "doublePage",
   "splitSpreads",
+  "chaseGutter",
   "paperTexture",
   "bookFold",
   "lighting",
@@ -280,6 +283,7 @@ async function main() {
     theme: isWebReader() ? "light" : "dark",
     doublePage: false,
     splitSpreads: true,
+    chaseGutter: true,
     paperTexture: !isWebReader(),
     bookFold: !isWebReader(),
     lighting: !isWebReader(),
@@ -538,6 +542,7 @@ async function main() {
     setBtn("bookShadowButton", prefs.bookShadow);
     setBtn("doublePageButton", prefs.doublePage);
     setBtn("splitSpreadsButton", prefs.splitSpreads);
+    setBtn("chaseGutterButton", prefs.chaseGutter);
 
     if (els.pageWidth) els.pageWidth.value = String(prefs.pageWidth);
     if (els.theme) els.theme.value = prefs.theme;
@@ -549,6 +554,7 @@ async function main() {
     setSwitch("paperTextureSwitch", prefs.paperTexture);
     setSwitch("bookFoldSwitch", prefs.bookFold);
     setSwitch("lightingSwitch", prefs.lighting);
+    setSwitch("chaseGutterSwitch", prefs.chaseGutter);
     applyI18n();
   }
 
@@ -1283,8 +1289,11 @@ async function main() {
       }
     }
 
-    const q = prefs.splitSpreads ? "" : "?split=0";
-    const res = await fetch(withVault(`/api/book${q}`));
+    const q = new URLSearchParams();
+    if (!prefs.splitSpreads) q.set("split", "0");
+    if (!prefs.chaseGutter) q.set("gutter", "0");
+    const qs = q.toString();
+    const res = await fetch(withVault(`/api/book${qs ? "?" + qs : ""}`));
     book = await res.json();
     leaves = book.leaves || [];
     positionKey = book.positionKey || book.folder || book.title || "";
@@ -1866,9 +1875,23 @@ async function main() {
     await persistPrefs();
     await reloadBook();
   });
+  toggleBtn("chaseGutterButton", "chaseGutter", async () => {
+    applyChrome();
+    await persistPrefs();
+    await reloadBook();
+  });
   bindSwitch("paperTextureSwitch", "paperTexture");
   bindSwitch("bookFoldSwitch", "bookFold");
   bindSwitch("lightingSwitch", "lighting");
+  const chaseGutterSwitch = document.getElementById("chaseGutterSwitch");
+  if (chaseGutterSwitch) {
+    chaseGutterSwitch.addEventListener("change", async () => {
+      prefs.chaseGutter = !!chaseGutterSwitch.checked;
+      applyChrome();
+      await persistPrefs();
+      await reloadBook();
+    });
+  }
 
   if (els.pageWidth) els.pageWidth.addEventListener("input", () => {
     prefs.pageWidth = parseInt(els.pageWidth.value, 10) || 90;

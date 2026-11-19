@@ -248,6 +248,11 @@ window.FAMI_WEB_READER = true;
       <input id="lightingSwitch" type="checkbox" role="switch"/>
       <span class="ask-sw"></span>
     </label>
+    <label class="ask-skip">
+      <span data-i18n="chaseGutter">自動找書縫</span>
+      <input id="chaseGutterSwitch" type="checkbox" role="switch"/>
+      <span class="ask-sw"></span>
+    </label>
   </div>
 </div>
 <div class="ask-mask" id="readerAskMask" hidden>
@@ -277,7 +282,7 @@ window.FAMI_WEB_READER = true;
     return;
   }
   var s = document.createElement("script");
-  s.src = "./reader.js?v=35";
+  s.src = "./reader.js?v=36";
   s.async = false;
   document.body.appendChild(s);
 })();
