@@ -1,1 +1,1 @@
-window.VAULT_ORIGIN = "https://difference-inform-earn-aye.trycloudflare.com";
+window.VAULT_ORIGIN = "https://homes-flows-teams-drain.trycloudflare.com";
