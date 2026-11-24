@@ -1,1 +1,1 @@
-window.VAULT_ORIGIN = "https://reactions-not-correction-brunswick.trycloudflare.com";
+window.VAULT_ORIGIN = "https://chance-put-contains-watches.trycloudflare.com";
