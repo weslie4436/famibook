@@ -1,1 +1,1 @@
-window.VAULT_ORIGIN = "https://chance-put-contains-watches.trycloudflare.com";
+window.VAULT_ORIGIN = "https://brown-option-controversial-summit.trycloudflare.com";
