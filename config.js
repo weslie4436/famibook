@@ -1,1 +1,1 @@
-window.VAULT_ORIGIN = "https://expense-creating-cited-sight.trycloudflare.com";
+window.VAULT_ORIGIN = "https://tide-impacts-curriculum-martial.trycloudflare.com";
