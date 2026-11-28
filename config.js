@@ -1,1 +1,1 @@
-window.VAULT_ORIGIN = "https://pipe-animated-tractor-appear.trycloudflare.com";
+window.VAULT_ORIGIN = "https://theory-higher-pens-sms.trycloudflare.com";
